@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-deployment
+  labels:
+    app: rptomcat
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rptomcat
+  template:
+    metadata:
+      labels:
+        app: rptomcat
+    spec:
+      containers:
+      - name: argocd-deployment
+        image: ghritu/rptomcat
+        ports:
+        - containerPort: 8080
